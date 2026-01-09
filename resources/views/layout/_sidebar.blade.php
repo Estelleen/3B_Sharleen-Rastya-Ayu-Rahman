@@ -29,6 +29,11 @@
             <i class="fas fa-fw fa-star"></i>
             <span>Ranks</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/tutors') }}">
+            <i class="fas fa-fw fa-moon"></i>
+            <span>Tutors</span></a>
+    </li>
     <hr class="sidebar-divider d-none d-md-block">
 
     <div class="text-center d-none d-md-inline">

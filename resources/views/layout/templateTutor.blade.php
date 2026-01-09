@@ -26,20 +26,38 @@
 
     <div id="wrapper">
 
-        @include('layout._sidebar')
+        <ul class="navbar-nav sidebar sidebar-dark accordion" style="background: linear-gradient(45deg, #553862, #313b64, #8f85d8);" id="accordionSidebar">
 
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <div class="sidebar-brand-icon">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3"> Asteria Star Talk</div>
+            </a>
+            <div class="sidebar-heading">Menu</div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/my-stargazers') }}">
+                    <i class="fas fa-fw fa-user-astronaut"></i>
+                    <span>My Stargazers</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/tutor/schedules') }}">
+                    <i class="fas fa-fw fa-star"></i>
+                    <span>Schedule</span></a>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
         <div id="content-wrapper" class="d-flex flex-column">
-
             <div id="content">
-
                 @include('layout._topbar')
-
                 <div class="container-fluid">
                     @yield('content')
                 </div>
-
             </div>
-
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -47,17 +65,12 @@
                     </div>
                 </div>
             </footer>
-
-        </div> </div> ...
 </body>
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>

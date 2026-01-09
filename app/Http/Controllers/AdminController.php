@@ -16,4 +16,13 @@ class AdminController extends Controller
 
         return view('adminView');
     }
+    public function listTutors()
+    {
+        // Mengambil user dengan role tutor lalu menghitung jumlah muridnya
+        $tutors = User::where('role', 'tutor')
+                      ->withCount('students') 
+                      ->get();
+
+        return view('admin.tutors.index', compact('tutors'));
+    }
 }

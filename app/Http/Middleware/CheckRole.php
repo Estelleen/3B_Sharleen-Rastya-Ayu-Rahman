@@ -20,9 +20,13 @@ class CheckRole
         }
 
         $user = auth()->user();
-        if(in_array($user->role, $roles)){
+        if ($user->role_id == 1 && in_array('admin', $roles)) {
             return $next($request);
         }
+
+        if ($user->role_id == 2 && in_array('tutor', $roles)) {
+            return $next($request);
+}
 
         abort(403, 'You dont have an access to this page');
     }

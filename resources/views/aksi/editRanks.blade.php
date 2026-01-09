@@ -21,7 +21,6 @@
                 <a href="http://127.0.0.1:8001/ranks">
                     <button style="background-color: #553862; color: white; border: none; padding: 5px 10px; border-radius: 5px; mb-1;">Back</button>
                 </a>
-
             </div>
         </form>
     </div>

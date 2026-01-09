@@ -48,9 +48,9 @@
                                 </small>
                             @enderror
                         </div>
-                        <div class="password-wrapper has-validation">
+                        <div class="password_confirmation-wrapper has-validation">
                             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password" required />
-                            <div class="show-confirm-password">
+                            <div class="show-password_confirmation">
                                 <span class="fas fa-lock" id="password_confirmation-lock"></span>
                             </div>
                             @error('password_confirmation')
@@ -98,16 +98,16 @@
             }
         });
         $('.show-password_confirmation').on('click', function() {
-        const confirmField = $('#password_confirmation'); // Sesuai ID di input
-        const confirmIcon = $('#password_confirmation-lock');
+            const confirmField = $('#password_confirmation');
+            const confirmIcon = $('#password_confirmation-lock');
 
-        if (confirmField.attr('type') === 'password') {
-            confirmField.attr('type', 'text');
-            confirmIcon.attr('class', 'fas fa-unlock');
-        } else {
-            confirmField.attr('type', 'password');
-            confirmIcon.attr('class', 'fas fa-lock');
-        }
+            if (confirmField.attr('type') == 'password') {
+                confirmField.attr('type', 'text');
+                confirmIcon.attr('class', 'fas fa-unlock');
+            } else {
+                confirmField.attr('type', 'password');
+                confirmIcon.attr('class', 'fas fa-lock');
+            }
         });
     </script>
   </body>

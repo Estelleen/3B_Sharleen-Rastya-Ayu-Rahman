@@ -65,11 +65,10 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                    <h1 style="color:white;">Already in Orbit?</h1>
-                    <p>If you already have a mission account, log in to continue your evolution.</p>
-                    <a href="{{ route('login') }}">
-                        <button class="ghost" id="loginBtn">Login Now</button>
-                    </a>
+                    <h1 style="color:white;">Greetings, Stargazer!</h1>
+                    <p style="color:white;">
+                        Welcome to the starting point of your cosmic journey. Here, we don't just learn English—we evolve from a silent Nebula into a brilliant Supernova!
+                    </p>
                 </div>
             </div>
         </div>

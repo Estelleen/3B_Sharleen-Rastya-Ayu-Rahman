@@ -20,6 +20,12 @@
                     <strong>Status Akun:</strong> 
                     <span class="text-success">{{ ucfirst($user->status) }}</span>
                 </div>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf<button type="submit" class="btn btn-outline-danger btn-block">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </div>

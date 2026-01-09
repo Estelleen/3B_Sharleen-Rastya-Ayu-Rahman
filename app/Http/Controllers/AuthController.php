@@ -12,18 +12,19 @@ class AuthController extends Controller
 {
     public function login(Request $request) {
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
 
             $user = Auth::user();
-            if ($user->role === 'admin') {
-            return redirect('/admin'); 
-        }
+            return $user->role_id == 1 ? redirect('/admin') : redirect('/tutor');
         }
 
-    return back()->with('failed', 'Email atau Password salah!');
+    return back()->with('failed', 'Wrong Email or Password!');
 }
 
     
@@ -37,20 +38,34 @@ class AuthController extends Controller
                 ->mixedCase()
                 ->numbers()
                 ->symbols()
-        ],
-            'password_confirmation' => 'required|same:password',
-        ]); 
+            ],
+        ]);
+
+            $email = $request->email;
+            $role_id = null;
+            $role_name = '';
+
+            if(str_contains($email, '@admin')){
+                $role_id = 1;
+                $role_name = 'admin';
+            }elseif(str_contains($email, '@tutor')){
+                $role_id = 2;
+                $role_name = 'tutor';
+            }else{
+                return back()->withErrors(['email' => 'Use email with @admin or @tutor domains'])->withInput();
+            }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'admin',
+            'role_id' => $role_id,
+            'role' => $role_name,
             'status'=> "active",
         ]);
 
         Auth::login($user);
-        return redirect('/admin')->with('success', 'Selamat datang!');
+        return $user->role_id == 1 ? redirect('/admin') : redirect('/tutor');
     }
 
     public function logout(Request $request){

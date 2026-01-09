@@ -26,6 +26,8 @@
                     <th>Goals</th>
                     <th>Preferred Schedule</th>
                     <th>Rank</th>
+                    <th>Tutor Assigned</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
         @foreach ($students as $student)
@@ -35,7 +37,24 @@
             <td>{{ $student -> no_hp }}</td>
             <td>{{ $student -> goals }}</td>
             <td>{{ $student -> preferred_schedule }}</td>
-            <td>{{ $student->rank->nama_ranks }}</td>
+            <td>{{ $student ->rank->nama_ranks }}</td>
+            <td>
+                @if($student->tutor)
+                    <span class="badge badge-success">{{ $student->tutor->name }}</span>
+                @else
+                    <span class="badge badge-secondary">Not Assigned Yet</span>
+                @endif
+            </td>
+            <td>
+                <a href="{{ route('students.editStudents', ['student' => $student -> id]) }}">
+                    <button style="background-color: #343f7eff; 
+                    color: white; border: none; padding: 5px 10px;
+                     border-radius: 5px; margin-bottom: 15px;">
+                    <i class="fas fa-edit"></i>
+                    Edit
+                    </button>
+                </a>
+            </td>
             </form>
             </td>
         </tr>

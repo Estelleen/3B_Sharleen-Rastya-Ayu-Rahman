@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use App\Models\Ranks;
+use App\Models\User;
 
 class StudentsController extends Controller
 {
@@ -60,17 +61,35 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(students $students)
+    public function edit($id)
     {
-        //
+        $student = Students::findOrFail($id);
+        $tutors = User::where('role', 'tutor')->get();
+        $ranks = Ranks::all();
+
+        return view('students.editStudents', compact('student', 'tutors', 'ranks'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, students $students)
+    public function update(Request $request, $id)
     {
-        //
+        $student = Students::findOrFail($id);
+        $data = $request->all();
+
+        $rank_id = $request->rank_id ?: $student->rank_id;
+
+        $student -> update([
+            'nama_students'         => $request->nama_students,
+            'no_hp'                 => $request->no_hp,
+            'goals'                 => $request->goals,
+            'preferred_schedule'    => $request->preferred_schedule,
+            'rank_id'               => $rank_id,
+            'tutor_id'              => $request->tutor_id,
+        ]);
+
+        return redirect('/students')->with('success', 'Student data updated!');
     }
 
     /**

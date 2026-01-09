@@ -20,10 +20,15 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'role', 
+        'role_id',
+        'role',
         'status',
         'password',
     ];
+    public function tutorSchedules() 
+    {
+    return $this->hasMany(Schedule::class, 'tutor_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -64,17 +64,11 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     {{ auth()->user()->name }}
                 </span>
-                <img class="img-profile rounded-circle" src="{{ asset('/') }}assets/img/xavier.jpeg">
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="{{ url('/profile') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile Settings
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
                 </a>
             </div>
         </li>
